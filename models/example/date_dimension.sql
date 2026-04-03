@@ -7,8 +7,8 @@ WITH CTE AS (
     {{ get_day_type('STARTED_AT') }} as day_type,
     {{ get_season('STARTED_AT') }} as station_of_year
 
-    from {{ source('demo', 'bike') }}
-    where STARTED_AT != 'started_at'
+    from {{ ref('stg_bike') }}
+    --where STARTED_AT != 'started_at'
 )
 
 select * from CTE
